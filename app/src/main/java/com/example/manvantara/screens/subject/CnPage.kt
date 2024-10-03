@@ -10,8 +10,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun DbmsPage(modifier: Modifier = Modifier, navController: NavController) {
+fun CnPage(modifier: Modifier = Modifier, navController: NavController) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
-        Text(text = "Welcome To DbmsPage", fontSize = 20.sp)
+        Text(text = "Welcome To CnPage", fontSize = 20.sp)
     }
 }

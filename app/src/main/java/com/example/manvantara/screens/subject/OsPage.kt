@@ -12,6 +12,6 @@ import androidx.navigation.NavController
 @Composable
 fun OsPage(modifier: Modifier = Modifier,navController: NavController) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
-    Text(text = "Welcome To OsPAge", fontSize = 50.sp)
-}
+    Text(text = "Welcome To OsPAge", fontSize = 20.sp)
+  }
 }

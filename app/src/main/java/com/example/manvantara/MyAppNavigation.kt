@@ -9,6 +9,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.manvantara.screens.HomePage
 import com.example.manvantara.screens.subject.OsPage
 import com.example.manvantara.screens.SignUpPage
+import com.example.manvantara.screens.subject.CnPage
+import com.example.manvantara.screens.subject.DbmsPage
+import com.example.manvantara.screens.subject.DsaPage
 import com.example.manvantara.viewmodel.AuthViewModel
 
 @Composable
@@ -26,6 +29,15 @@ fun MyAppNavigation(modifier: Modifier = Modifier) {
         }
         composable("os") {
             OsPage(modifier,navcontroller)
+        }
+        composable("dbms") {
+            DbmsPage(modifier,navcontroller)
+        }
+        composable("dsa") {
+            DsaPage(modifier,navcontroller)
+        }
+        composable("cn") {
+            CnPage(modifier,navcontroller)
         }
     }
 }

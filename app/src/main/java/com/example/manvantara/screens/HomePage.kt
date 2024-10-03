@@ -115,9 +115,15 @@ fun DisplaySubjectCards(navController: NavController) {
         CardData(R.drawable.os, videoTitle = "Operating System ", channelName = "Love Babbar"){
             navController.navigate("os")
         },
-        CardData(R.drawable.dbms, videoTitle = "Database management System ", channelName = "Gate Smashers"){},
-        CardData(R.drawable.dsa, videoTitle = "Data Structures and Algorithm  ", channelName = "Geeks For Geeks"){},
-        CardData(R.drawable.cn, videoTitle = "Computer Networks", channelName = "Gate Smashers"){}
+        CardData(R.drawable.dbms, videoTitle = "Database management System ", channelName = "Gate Smashers"){
+            navController.navigate("dbms")
+        },
+        CardData(R.drawable.dsa, videoTitle = "Data Structures and Algorithm  ", channelName = "Geeks For Geeks"){
+            navController.navigate("dsa")
+        },
+        CardData(R.drawable.cn, videoTitle = "Computer Networks", channelName = "Gate Smashers"){
+            navController.navigate("cn")
+        }
     )
     LazyColumn(
         modifier = Modifier

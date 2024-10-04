@@ -118,10 +118,10 @@ fun DisplaySubjectCards(navController: NavController) {
         CardData(R.drawable.dbms, videoTitle = "Database management System ", channelName = "Code Help"){
             navController.navigate("dbms")
         },
-        CardData(R.drawable.dsa, videoTitle = "Data Structures and Algorithm  ", channelName = "Geeks For Geeks"){
+        CardData(R.drawable.dsa, videoTitle = "Data Structures and Algorithm  ", channelName = "Apna College"){
             navController.navigate("dsa")
         },
-        CardData(R.drawable.cn, videoTitle = "Computer Networks", channelName = "Gate Smashers"){
+        CardData(R.drawable.cn, videoTitle = "Computer Networks", channelName = "KnowledgeGATE"){
             navController.navigate("cn")
         }
     )

@@ -66,4 +66,74 @@ class YoutubeRepository @Inject constructor() {
             YoutubeVideo("Lecture 31: What is Thrashing? || Important Interview Question", "https://www.youtube.com/watch?v=gA34TuSHAHk")
         )
     }
+
+    fun cnPlaylist(): List<YoutubeVideo> {
+        return listOf(
+            YoutubeVideo("Lecture 1: What is Computer Network?", "https://www.youtube.com/watch?v=7NFJGH4PzAs"),
+            YoutubeVideo("Lecture 2: Five components of Data Communication | Computer Networks in Hindi", "https://www.youtube.com/watch?v=lGsJAbrMVa4"),
+            YoutubeVideo("Lecture 3: Effectiveness of Data Communication in Computer Networks in Hindi", "https://www.youtube.com/watch?v=B8RHylzFjeA"),
+            YoutubeVideo("Lecture 4: Transmission Mode in Data Communication | Simplex, Half-Duplex and Full-Duplex mode", "https://www.youtube.com/watch?v=bblYjfCvoJU"),
+            YoutubeVideo("Lecture 5: Type of Connection Point-to-Point and Multi-Point Connection in Computer Networks", "https://www.youtube.com/watch?v=4jT7TG0NNhc"),
+            YoutubeVideo("Lecture 6: Physical Topology in Computer Networks | Mesh Topology", "https://www.youtube.com/watch?v=ei5fvr6NHf4"),
+            YoutubeVideo("Lecture 7: Star Topology in Computer Networks in Hindi - types of topology", "https://www.youtube.com/watch?v=GgV3wUsmi4U"),
+            YoutubeVideo("Lecture 8: Bus Topology in Computer Networks in Hindi - types of topology", "https://www.youtube.com/watch?v=Q71kgKaUJRY"),
+            YoutubeVideo("Lecture 9: Ring Topology in Computer Networks in Hindi - types of topology", "https://www.youtube.com/watch?v=xQC6vPlOd_s"),
+            YoutubeVideo("Lecture 10: Basics of Open System Interconnection OSI model in Hindi and how it works", "https://www.youtube.com/watch?v=9nIhpzMv1BI"),
+            YoutubeVideo("Lecture 11: Working of Open System Interconnection OSI model in Hindi", "https://www.youtube.com/watch?v=fZQ11oo9D7Y"),
+            YoutubeVideo("Lecture 12: Basics of Physical Layer with functionality and duties in Hindi", "https://www.youtube.com/watch?v=vL9kQI0gDPU"),
+            YoutubeVideo("Lecture 13: Data Link Layer duties, services and functionality in Hindi", "https://www.youtube.com/watch?v=5cPiRYtgTUI"),
+            YoutubeVideo("Lecture 14: Network Layer duties, services and functionality in Hindi - Computer Networks", "https://www.youtube.com/watch?v=-qyAlUG81JU"),
+            YoutubeVideo("Lecture 15: Transport Layer duties, services and functionality in Hindi - Computer Networks", "https://www.youtube.com/watch?v=FiZ2z6RwJQI"),
+            YoutubeVideo("Lecture 16: Session Presentation Application Layer duties, services and functionality in Hindi", "https://www.youtube.com/watch?v=Cs9pwZmMywc"),
+            YoutubeVideo("Lecture 17: Transmission Medium Wired & Guided Twisted Pair Cable Coaxial Cable Optical Fiber", "https://www.youtube.com/watch?v=rzVlWMkvdKM"),
+            YoutubeVideo("Lecture 18: Access Control in Data Link Layer in Hindi | Computer Network", "https://www.youtube.com/watch?v=jxcW3Wfj8s8"),
+            YoutubeVideo("Lecture 19: Propagation Time Vs Transmission Time in Hindi", "https://www.youtube.com/watch?v=SwB7NSEkD_A"),
+            YoutubeVideo("Lecture 20: Everything About Pure ALOHA", "https://www.youtube.com/watch?v=iAsGKAj-bcY"),
+            YoutubeVideo("Lecture 21: Everything About Slotted ALOHA", "https://www.youtube.com/watch?v=9lEvqxp9ODQ"),
+            YoutubeVideo("Lecture 22: CSMA Carrier Sense Multiple Access", "https://www.youtube.com/watch?v=ANuoGgUJs5g"),
+            YoutubeVideo("Lecture 23: Persistence Methods in CSMA 1-Persistent Non-Persistent P-Persistent", "https://www.youtube.com/watch?v=ATV4uoYpV8w"),
+            YoutubeVideo("Lecture 24: CSMA/CD Carrier Sense Multiple Access With Collision Detection", "https://www.youtube.com/watch?v=HyPiw5XWV0c"),
+            YoutubeVideo("Lecture 25: CSMA/CA Carrier Sense Multiple Access With Collision Avoidance", "https://www.youtube.com/watch?v=Cm6Vv0Ds8tk"),
+            YoutubeVideo("Lecture 26: Controlled Access Methods Reservation Polling Token Passing", "https://www.youtube.com/watch?v=pF8n3j9ucds"),
+            YoutubeVideo("Lecture 27: FDMA TDMA CDMA Channelization Protocol", "https://www.youtube.com/watch?v=4x0oT7AeNYs"),
+            YoutubeVideo("Lecture 28: Stop-and-Wait ARQ Sliding Window Protocol", "https://www.youtube.com/watch?v=HFNbkmub6MQ"),
+            YoutubeVideo("Lecture 29: Go-Back-N ARQ Sliding Window Protocol", "https://www.youtube.com/watch?v=oSEUqV_XuNI"),
+            YoutubeVideo("Lecture 30: Selective Repeat ARQ Sliding Window Protocol", "https://www.youtube.com/watch?v=uM4glyAWD4Q"),
+            YoutubeVideo("Lecture 31: IPV4 Header Structure in Hindi | Fields in IPV4 Header in Hindi", "https://www.youtube.com/watch?v=7z8A8EQik_w"),
+            YoutubeVideo("Lecture 32: IPV4 Header Version Field in Hindi | Version Field in IPV4 Header Hindi", "https://www.youtube.com/watch?v=8ghyUgREJOI"),
+            YoutubeVideo("Lecture 33: IPV4 Header Length In Hindi | Header Length in Hindi", "https://www.youtube.com/watch?v=ZzEvv-fC52M"),
+            YoutubeVideo("Lecture 34: IPV4 Header Time To Live Field in Hindi | TTL field in Hindi", "https://www.youtube.com/watch?v=xoD49fOau7g"),
+            YoutubeVideo("Lecture 35: IPV4 Header PROTOCOL field in Hindi | PROTOCOL field in Hindi", "https://www.youtube.com/watch?v=G3qCqUhYqrs"),
+            YoutubeVideo("Lecture 36: What is Logical or IP Addressing", "https://www.youtube.com/watch?v=7W5cUJV5FvY"),
+            YoutubeVideo("Lecture 37: Classful Addressing Complete Discussion", "https://www.youtube.com/watch?v=P7g--FJdUXE"),
+            YoutubeVideo("Lecture 38: Complete Subnetting in One video", "https://www.youtube.com/watch?v=QmAqpEkXAvo"),
+            YoutubeVideo("Lecture 39: Types of Casting in Computer Networks Unicast Broadcast Multicast", "https://www.youtube.com/watch?v=eWb35_xIKho")
+        )
+    }
+
+    fun dsaPlaylist(): List<YoutubeVideo> {
+        return listOf(
+            YoutubeVideo("Lecture 1: Flowchart & Pseudocode + Installation | DSA Series by Shradha Ma'am | C++", "https://www.youtube.com/watch?v=VTLCoHnyACE"),
+            YoutubeVideo("Lecture 2: Variable, Data Types & Operators | DSA Series by Shradha Ma'am | C++", "https://www.youtube.com/watch?v=Dxu7GKtdbnA"),
+            YoutubeVideo("Lecture 3: Conditional Statements & Loops | DSA Series by Shradha Ma'am | C++", "https://www.youtube.com/watch?v=qR9U6bKxJ7g"),
+            YoutubeVideo("Lecture 4: Patterns | DSA Series by Shradha Khapra Ma'am | C++", "https://www.youtube.com/watch?v=rga_q2N7vU8"),
+            YoutubeVideo("Lecture 5: Functions | DSA Series by Shradha Khapra Ma'am | C++", "https://www.youtube.com/watch?v=P08Z_NC8GuY"),
+            YoutubeVideo("Lecture 6: Binary Number System | DSA Series by Shradha Khapra Ma'am | C++", "https://www.youtube.com/watch?v=xpy5NXiBFvA"),
+            YoutubeVideo("Lecture 7: Bitwise Operators, Data Type Modifiers & more | DSA Series by Shradha Khapra Ma'am | C++", "https://www.youtube.com/watch?v=r-u4uh3QvsQ"),
+            YoutubeVideo("Lecture 8: Array Data Structure - Part 1 | DSA Series by Shradha Khapra Ma'am | C++", "https://www.youtube.com/watch?v=8wmn7k1TTcI"),
+            YoutubeVideo("Lecture 9: Vectors in C++ | Arrays Part 2 | DSA Series by Shradha Ma'am", "https://www.youtube.com/watch?v=NWg38xWYzEg"),
+            YoutubeVideo("Lecture 10: Kadane's Algorithm | Maximum Subarray Sum | DSA Series by Shradha Ma'am", "https://www.youtube.com/watch?v=9IZYqostl2M"),
+            YoutubeVideo("Lecture 11: Majority Element | Brute- Better-Best Approach | Moore's Voting Algorithm & Pair Sum", "https://www.youtube.com/watch?v=_xqIp2rj8bo"),
+            YoutubeVideo("Lecture 12: Time & Space Complexity - DSA Series by Shradha Ma'am", "https://www.youtube.com/watch?v=PwKv8fOcriM"),
+            YoutubeVideo("Lecture 13: Buy and Sell Stock Problem and Pow(X,N) Power Exponential Problem - Leetcode | DSA Series", "https://www.youtube.com/watch?v=WBzZCm46mFo"),
+            YoutubeVideo("Lecture 14: Container with Most Water Problem | Brute & Optimal Solution | Two Pointer Approach - Leetcode 11", "https://www.youtube.com/watch?v=EbkMABpP52U"),
+            YoutubeVideo("Lecture 15: Product of Array Except Self | Brute to Optimal Solution | Leetcode 238", "https://www.youtube.com/watch?v=TW2m8m_FNJE"),
+            YoutubeVideo("Lecture 16: Pointers in C++ | In Detail | DSA Series by Shradha Ma'am", "https://www.youtube.com/watch?v=qYEjR6M0wSk"),
+            YoutubeVideo("Lecture 17: Binary Search Algorithm - Iterative and Recursive Method | [Theory + Code] with Example", "https://www.youtube.com/watch?v=TbbSJrY5GqQ"),
+            YoutubeVideo("Lecture 18: Search in Rotated Sorted Array | Binary Search | Leetcode 33", "https://www.youtube.com/watch?v=6WNZQBHWQJs"),
+            YoutubeVideo("Lecture 19: Peak Index in Mountain Array | Binary Search | Leetcode 852", "https://www.youtube.com/watch?v=RjxD6UXGlhc"),
+            YoutubeVideo("Lecture 20: Single Element in Sorted Array | Binary Search | DSA Series", "https://www.youtube.com/watch?v=qsbCBduIs40")
+        )
+    }
+
 }

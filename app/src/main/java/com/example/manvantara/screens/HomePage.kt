@@ -47,7 +47,7 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
             TopAppBar(
                 title = {
                     Row(
-                        modifier = Modifier.padding(start = 10.dp)
+                        modifier = Modifier.padding(start = 5.dp)
                     ) {
                         Text(
                             text = "Man",
@@ -78,7 +78,7 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
                         modifier = Modifier
                             .height(80.dp)
                             .width(80.dp)
-                            .padding(start = 10.dp, top = 8.dp)
+                            .padding(start = 3.dp, top = 8.dp)
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -115,7 +115,7 @@ fun DisplaySubjectCards(navController: NavController) {
         CardData(R.drawable.os, videoTitle = "Operating System ", channelName = "Love Babbar"){
             navController.navigate("os")
         },
-        CardData(R.drawable.dbms, videoTitle = "Database management System ", channelName = "Gate Smashers"){
+        CardData(R.drawable.dbms, videoTitle = "Database management System ", channelName = "Code Help"){
             navController.navigate("dbms")
         },
         CardData(R.drawable.dsa, videoTitle = "Data Structures and Algorithm  ", channelName = "Geeks For Geeks"){

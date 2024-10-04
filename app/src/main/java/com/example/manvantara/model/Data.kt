@@ -7,3 +7,7 @@ data class CardData(
     val videoTitle : String,
     val channelName : String,
     val onClick : () -> Unit)
+
+data class YoutubeVideo(
+    val title : String,
+    val link : String)

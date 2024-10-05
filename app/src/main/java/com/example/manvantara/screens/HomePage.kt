@@ -123,7 +123,10 @@ fun DisplaySubjectCards(navController: NavController) {
         },
         CardData(R.drawable.cn, videoTitle = "Computer Networks", channelName = "KnowledgeGATE"){
             navController.navigate("cn")
-        }
+        },
+        CardData(R.drawable.codesnippet, videoTitle = "Guess the Output", channelName = "Geeks For Geeks"){
+        navController.navigate("code snippet")
+    }
     )
     LazyColumn(
         modifier = Modifier

@@ -61,7 +61,7 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
 
                         )
                         Text(
-                            text = "vantara",
+                            text = "Vantara",
                             color = Color.Cyan,
                             fontWeight = FontWeight.Bold,
 //                            style = MaterialTheme.typography.headlineSmall // Adjust the text style if needed

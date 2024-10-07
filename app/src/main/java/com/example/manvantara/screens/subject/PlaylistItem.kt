@@ -3,6 +3,7 @@ package com.example.manvantara.screens.subject
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,6 +29,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
@@ -36,28 +39,37 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import com.example.manvantara.model.YoutubeVideo
 import com.example.manvantara.R
 
 
 @Composable
-fun PlayListItem(video : YoutubeVideo) {
+fun PlayListItem(video: YoutubeVideo) {
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
             .padding(6.dp)
-            .fillMaxWidth(),
-        elevation = CardDefaults.elevatedCardElevation(8.dp),
+            .fillMaxWidth()
+            .shadow(elevation = 10.dp, shape = RoundedCornerShape(12.dp))
+            .background(brush = Brush.verticalGradient(
+                colors = listOf(
+                    Color(0xFF0F2027),
+                    Color(0xFF203A43),
+                    Color(0xFF2C5364)
+                )
+            )),
+        elevation = CardDefaults.elevatedCardElevation(12.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.Black,
+//            containerColor = Color.Transparent,  // Use transparent to show gradient
             contentColor = Color.Cyan
-        ),  // Cyan theme for the card
-        shape = RoundedCornerShape(8.dp)
+        ),
+        shape = RoundedCornerShape(12.dp)
     ) {
         Column {
-            // Topic Header Row
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -68,14 +80,16 @@ fun PlayListItem(video : YoutubeVideo) {
 
                 Text(
                     text = video.title,
-                    fontSize = 13.sp,
-                    color = Color.Cyan,  // White text for contrast
+                    fontSize = 14.sp,
+                    color = Color.White,
                     modifier = Modifier.weight(1f),
                     textAlign = TextAlign.Start,
-                    fontStyle = FontStyle.Normal
+                    fontStyle = FontStyle.Normal,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
                 )
 
-                // Expand/Collapse Icon
+                // Play Icon with a subtle scale animation
                 IconButton(onClick = {
                     val intent = Intent(
                         Intent.ACTION_VIEW,
@@ -86,10 +100,12 @@ fun PlayListItem(video : YoutubeVideo) {
                     Icon(
                         imageVector = Icons.Default.PlayArrow,
                         contentDescription = "Play Video",
-                        tint = Color.Cyan
+                        tint = Color.Cyan,
+                        modifier = Modifier.size(28.dp)
                     )
                 }
             }
+
         }
     }
 }

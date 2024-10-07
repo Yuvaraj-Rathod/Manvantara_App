@@ -55,9 +55,7 @@ import com.example.manvantara.viewmodel.AuthViewModel
 fun HomePage(modifier: Modifier = Modifier, navController: NavController, authViewModel: AuthViewModel) {
     val searchQuery = remember { mutableStateOf("") } // State to handle the search query
 
-    Scaffold(
-        modifier = Modifier.background(Color.Black)
-    ) {
+    Scaffold() {
         Column(
             modifier = Modifier
                 .padding(start = 16.dp, top = 50.dp) // Adjust padding for balance

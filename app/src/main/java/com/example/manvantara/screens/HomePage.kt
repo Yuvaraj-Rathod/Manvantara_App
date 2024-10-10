@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.view.WindowInsets
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,18 +28,22 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -46,6 +52,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
@@ -57,14 +64,24 @@ import androidx.navigation.NavController
 import com.example.manvantara.R
 import com.example.manvantara.model.CardData
 import com.example.manvantara.screens.subject.DisplayCardsObject
+import com.example.manvantara.viewmodel.AuthState
 import com.example.manvantara.viewmodel.AuthViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomePage(modifier: Modifier = Modifier, navController: NavController, authViewModel: AuthViewModel
-) {
+fun HomePage(modifier: Modifier = Modifier, navController: NavController, authViewModel: AuthViewModel) {
     val searchQuery = remember { mutableStateOf("") }
+    val authState = authViewModel.authState.observeAsState()
+    val context = LocalContext.current.applicationContext
+
+    LaunchedEffect(authState.value) {
+        when (authState.value) {
+            is AuthState.Unauthenticated -> navController.navigate("login")
+            else -> Unit
+        }
+    }
 
     Scaffold(
         content = { paddingValues ->
@@ -122,6 +139,12 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
                     modifier = Modifier.padding(start = 16.dp)
                 )
                 DisplayCardsObject.DisplayOtherCards(navController)
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                IconButton(onClick = {authViewModel.signout()}) {
+                    Icon(imageVector = Icons.Default.Home, contentDescription = "Sign out")
+                }
             }
         }
     )

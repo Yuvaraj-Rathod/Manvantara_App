@@ -128,7 +128,7 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController,authVie
         )
 
         Button(onClick = {
-            AuthViewModel().login(email = Email, password = Password)
+            authViewModel.login(email = Email, password = Password)
         },
             colors = ButtonDefaults.buttonColors(Color.Cyan),
             modifier = Modifier.padding(top = 14.dp)

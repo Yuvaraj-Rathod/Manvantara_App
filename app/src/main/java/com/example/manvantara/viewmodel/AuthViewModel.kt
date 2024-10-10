@@ -27,6 +27,7 @@ class AuthViewModel : ViewModel() {
     fun login(email : String,password : String){
         if(email.isEmpty() || password.isEmpty()){
             _authState.value = AuthState.Error("Email or Password cant be Empty")
+            return
         }
         _authState.value = AuthState.Loading
         auth.signInWithEmailAndPassword(email,password)
@@ -42,6 +43,7 @@ class AuthViewModel : ViewModel() {
     fun signup(email : String,password : String){
         if(email.isEmpty() || password.isEmpty()){
             _authState.value = AuthState.Error("Email or Password cant be Empty")
+            return
         }
         _authState.value = AuthState.Loading
         auth.createUserWithEmailAndPassword(email,password)
@@ -55,6 +57,7 @@ class AuthViewModel : ViewModel() {
     }
 
     fun signout(){
+        auth.signOut()
         _authState.value = AuthState.Unauthenticated
     }
 

@@ -1,4 +1,5 @@
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
@@ -19,8 +21,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 //import androidx.compose.runtime.R
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -36,13 +40,28 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.manvantara.R
+import com.example.manvantara.viewmodel.AuthState
 import com.example.manvantara.viewmodel.AuthViewModel
 
 @Composable
 fun LoginPage(modifier: Modifier = Modifier,navController: NavController,authViewModel: AuthViewModel) {
-    var Username by remember { mutableStateOf("") }
+    var Email by remember { mutableStateOf("") }
     var Password by remember { mutableStateOf("") }
     val context = LocalContext.current.applicationContext
+    val authState = authViewModel.authState.observeAsState()
+
+    LaunchedEffect(authState.value) {
+        when (authState.value) {
+            is AuthState.Authenticated -> navController.navigate("homepage")
+            is AuthState.Error -> Toast.makeText(
+                context, (authState.value as AuthState.Error).message,
+                Toast.LENGTH_SHORT
+            ).show()
+
+            else -> Unit
+        }
+    }
+
     Column( modifier = Modifier
         .fillMaxSize()
         .padding(vertical = 90.dp, horizontal = 15.dp),
@@ -64,8 +83,8 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController,authVie
 
         ) {
         OutlinedTextField(
-            value = Username, onValueChange = { Username = it },
-            label = { Text(text = "username") },
+            value = Email, onValueChange = { Email = it },
+            label = { Text(text = "Email") },
             shape = RoundedCornerShape(20.dp),
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.Black,
@@ -78,7 +97,7 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController,authVie
                 unfocusedIndicatorColor = Color.Cyan,
             ),
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Person, contentDescription = "Username")
+                Icon(imageVector = Icons.Default.Email, contentDescription = "Email")
             },
             modifier = Modifier.fillMaxWidth()
         )
@@ -109,7 +128,7 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController,authVie
         )
 
         Button(onClick = {
-        navController.navigate("homepage")
+            AuthViewModel().login(email = Email, password = Password)
         },
             colors = ButtonDefaults.buttonColors(Color.Cyan),
             modifier = Modifier.padding(top = 14.dp)
@@ -118,7 +137,9 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController,authVie
             Text(text = "Login")
         }
 
-        TextButton(onClick = { navController.navigate("signup")}){
+        TextButton(onClick = {
+            navController.navigate("signup")
+        }){
             Text(text  = "Dont have any account ? SignUp" )
         }
             

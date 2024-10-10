@@ -16,7 +16,7 @@ import com.example.manvantara.screens.subject.DsaPage
 import com.example.manvantara.viewmodel.AuthViewModel
 
 @Composable
-fun MyAppNavigation(modifier: Modifier = Modifier) {
+fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel) {
     val navcontroller = rememberNavController()
     NavHost(navController = navcontroller, startDestination = "Login") {
        composable("login") {
@@ -43,5 +43,6 @@ fun MyAppNavigation(modifier: Modifier = Modifier) {
         composable("code snippet") {
             CodeSnippetPage(modifier)
         }
+
     }
 }

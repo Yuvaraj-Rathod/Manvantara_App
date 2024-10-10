@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.manvantara.ui.theme.ManvantaraTheme
+import com.example.manvantara.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,9 +22,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val authViewModel : AuthViewModel by viewModels()
             ManvantaraTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                       MyAppNavigation(modifier = Modifier.padding(innerPadding))
+                       MyAppNavigation(modifier = Modifier.padding(innerPadding), authViewModel = authViewModel)
                 }
             }
         }

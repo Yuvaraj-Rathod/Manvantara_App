@@ -45,14 +45,25 @@ fun SignUpPage(modifier: Modifier = Modifier, navController: NavController, auth
     val authState = authViewModel.authState.observeAsState()
 
     LaunchedEffect(authState.value) {
-        when(authState.value){
-            is AuthState.Authenticated -> navController.navigate("homepage")
-            is AuthState.Error -> Toast.makeText(context,(authState.value as AuthState.Error).message,Toast.LENGTH_SHORT).show()
+        when (authState.value) {
+            is AuthState.EmailVerificationSent -> {
+                Toast.makeText(context, "Verification email sent! Please verify your email before logging in.", Toast.LENGTH_LONG).show()
+            }
+            is AuthState.Authenticated -> {
+                val user = authViewModel.getCurrentUser() // Create a method in the ViewModel to get the current user
+                if (user?.isEmailVerified == true) {
+                    navController.navigate("homepage")
+                } else {
+                    Toast.makeText(context, "Please verify your email first.", Toast.LENGTH_LONG).show()
+                }
+            }
+            is AuthState.Error -> {
+                Toast.makeText(context, (authState.value as AuthState.Error).message, Toast.LENGTH_SHORT).show()
+            }
             else -> Unit
         }
-
-
     }
+
     Column( modifier = Modifier
         .fillMaxSize()
         .padding(vertical = 90.dp, horizontal = 15.dp)

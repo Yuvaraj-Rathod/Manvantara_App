@@ -39,7 +39,7 @@ fun CardItem(cardData: CardData) {
     Card(
         modifier = Modifier
             .padding(vertical = 6.dp, horizontal = 8.dp) // Increased padding for better card spacing
-            .width(320.dp) // Increased width for a more prominent card
+            .width(330.dp) // Increased width for a more prominent card
             .shadow(10.dp, RoundedCornerShape(12.dp)) // Increased shadow and rounded corners for depth
             .background(Color.Black),
         elevation = CardDefaults.cardElevation(defaultElevation = 12.dp)

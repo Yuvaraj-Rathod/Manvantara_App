@@ -70,58 +70,58 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
                 modifier = Modifier
                     .padding(paddingValues)
                     .fillMaxSize()
-                    .padding(start = 16.dp)
+                    .padding(start = 12.dp)
                     .verticalScroll(rememberScrollState())
             ) {
 
-                Spacer(modifier = Modifier.height(16.dp)) // Space between title and search bar
+                Spacer(modifier = Modifier.height(10.dp)) // Space between title and search bar
 
                 // Search Bar
                 SearchBar(navController = navController)
 
-                Spacer(modifier = Modifier.height(12.dp))
+//                Spacer(modifier = Modifier.height(6.dp))
 
                 // Course Videos Section
                 Text(
                     text = "Course Videos",
-                    color = Color.White,
+                    color = Color(0xFFB2FFFF),
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.headlineSmall,
-                    fontSize = 24.sp,
+                    fontSize = 23.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+//                Spacer(modifier = Modifier.height(6.dp))
 
                     DisplayCardsObject.DisplaySubjectCards(navController)
 
-                Spacer(modifier = Modifier.height(8.dp))
+//                Spacer(modifier = Modifier.height(6.dp))
 
                 // One shot videos Section
                 Text(
                     text = "One shot videos",
-                    color = Color.White,
+                    color = Color(0xFFB2FFFF),
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.headlineSmall,
-                    fontSize = 24.sp,
+                    fontSize = 23.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
                     DisplayCardsObject.DisplayOneShotCards(navController)
 
-                Spacer(modifier = Modifier.height(8.dp))
+//                Spacer(modifier = Modifier.height(6.dp))
 
                 // Aptitude Section
                 Text(
                     text = "Aptitude",
-                    color = Color.White,
+                    color = Color(0xFFB2FFFF),
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.headlineSmall,
-                    fontSize = 24.sp,
+                    fontSize = 23.sp,
                     modifier = Modifier.padding(start = 16.dp)
                 )
                 DisplayCardsObject.DisplayOtherCards(navController)
 
-                Spacer(modifier = Modifier.height(8.dp))
+//                Spacer(modifier = Modifier.height(6.dp))
 
                 Box(
                     modifier = Modifier
@@ -137,7 +137,7 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
                             contentDescription = "Sign out",
                             tint = Color.White,
                             modifier = Modifier.size(78.dp)
-                                .background(Color(0XFF00FFFF)))
+                                .background(Color(0xFF008B8B)))
                     }
                 }
             }
@@ -176,7 +176,7 @@ fun SearchBar(navController: NavController) {
         value = searchQuery,
         onValueChange = { searchQuery = it },
         label = { Text(text = "Search Course") },
-        shape = RoundedCornerShape(35.dp),
+//        shape = RoundedCornerShape(35.dp),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Color.Cyan,
             unfocusedBorderColor = Color.Cyan,
@@ -189,7 +189,7 @@ fun SearchBar(navController: NavController) {
         },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(start = 24.dp, bottom = 16.dp, top = 16.dp, end = 26.dp),
         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(onSearch = {
             handleSearchQuery(navController, searchQuery)

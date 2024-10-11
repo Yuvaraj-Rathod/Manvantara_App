@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -50,7 +51,8 @@ fun DbmsPage(modifier: Modifier = Modifier, navController: NavController) {
                 ) // Rounded bottom-left corner
                 .background(Color(0XFF000000))  // Light cyan background
                 .padding(16.dp)  // Padding inside the box
-                .height(250.dp)
+                //                .height(250.dp)
+                .wrapContentHeight()
 
         ) {
             Column {

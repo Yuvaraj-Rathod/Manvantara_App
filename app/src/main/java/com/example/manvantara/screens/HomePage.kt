@@ -2,14 +2,20 @@ package com.example.manvantara.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,7 +23,12 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -40,15 +51,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.manvantara.screens.subject.DisplayCardsObject
 import com.example.manvantara.viewmodel.AuthState
 import com.example.manvantara.viewmodel.AuthViewModel
+import kotlin.math.roundToInt
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -73,13 +87,12 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
                     .padding(start = 12.dp)
                     .verticalScroll(rememberScrollState())
             ) {
+                TopBar(navController = navController,authViewModel =authViewModel)
 
-                Spacer(modifier = Modifier.height(10.dp)) // Space between title and search bar
+                Spacer(modifier = Modifier.height(4.dp)) // Space between title and search bar
 
                 // Search Bar
                 SearchBar(navController = navController)
-
-//                Spacer(modifier = Modifier.height(6.dp))
 
                 // Course Videos Section
                 Text(
@@ -120,26 +133,7 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
                     modifier = Modifier.padding(start = 16.dp)
                 )
                 DisplayCardsObject.DisplayOtherCards(navController)
-
-//                Spacer(modifier = Modifier.height(6.dp))
-
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .clip(RoundedCornerShape(20.dp))
-                        .padding(bottom = 15.dp),
-                        //.background(Color(0XFF000000)),
-                    // Fills the parent size
-                    contentAlignment = Alignment.Center// Centers the content within the Box
-                    ) {
-                    IconButton(onClick = { authViewModel.signout() }){
-                        Icon(imageVector = Icons.Default.Home,
-                            contentDescription = "Sign out",
-                            tint = Color.White,
-                            modifier = Modifier.size(78.dp)
-                                .background(Color(0xFF008B8B)))
-                    }
-                }
+//                DraggableFloatingButton(imageVector = Icons.Default.Favorite, description = "download") {}
             }
         }
     )
@@ -176,7 +170,7 @@ fun SearchBar(navController: NavController) {
         value = searchQuery,
         onValueChange = { searchQuery = it },
         label = { Text(text = "Search Course") },
-//        shape = RoundedCornerShape(35.dp),
+        shape = RoundedCornerShape(20.dp),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Color.Cyan,
             unfocusedBorderColor = Color.Cyan,
@@ -189,7 +183,7 @@ fun SearchBar(navController: NavController) {
         },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 24.dp, bottom = 16.dp, top = 16.dp, end = 26.dp),
+            .padding(start = 16.dp, bottom = 16.dp, top = 16.dp, end = 16.dp),
         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(onSearch = {
             handleSearchQuery(navController, searchQuery)
@@ -209,3 +203,97 @@ fun handleSearchQuery(navController: NavController, query: String) {
         }
     }
 }
+
+@Composable
+fun TopBar(navController: NavController,authViewModel: AuthViewModel) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 14.dp, top = 25.dp, end = 14.dp)
+    ){
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Absolute.SpaceBetween
+        ) {
+
+            BoxButton(imageVector = Icons.Default.Info, description = "info") {
+                navController.navigate("login")
+            }
+
+            Text(text = "Manvantara",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 10.dp)
+            )
+
+            BoxButton(imageVector = Icons.Default.Person, description = "person") {
+                navController.navigate("login")
+            }
+
+            BoxButton(imageVector = Icons.Default.ExitToApp, description = "exit") {
+                authViewModel.signout()
+            }
+        }
+    }
+}
+
+@Composable
+fun BoxButton(imageVector: ImageVector, description: String, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(12.dp)) // Apply rounded corners here
+            .background(Color(0xFF008B8B)) // Apply the background color to the Box
+            .clickable(onClick = onClick) // Handle click events
+            .padding(8.dp), // Padding inside the box
+        contentAlignment = Alignment.Center // Centers the content within the Box
+    ) {
+        Icon(
+            imageVector = imageVector,
+            contentDescription = description,
+            tint = Color.White,
+            modifier = Modifier.size(25.dp) // Adjust the size of the icon
+        )
+    }
+}
+
+//@Composable
+//fun DraggableFloatingButton(
+//    imageVector: ImageVector, // Button icon
+//    description: String, // Content description
+//    onClick: () -> Unit // Click action
+//) {
+//    // Remember the position state
+//    var offsetX by remember { mutableStateOf(0f) }
+//    var offsetY by remember { mutableStateOf(0f) }
+//
+//    Box(
+//        modifier = Modifier
+//            .fillMaxSize() // Fill the available space
+//    ) {
+//        Box(
+//            modifier = Modifier
+//                .size(56.dp) // Size of the button
+//                .clip(CircleShape) // Circular shape for the button
+//                .background(Color(0xFF008B8B)) // Background color
+//                .offset { IntOffset(offsetX.roundToInt(), offsetY.roundToInt()) } // Offset for drag movement
+//                .pointerInput(Unit) {
+//                    detectDragGestures { change, dragAmount ->
+//                        change.consume() // Consume the gesture
+//                        // Update the offset based on the drag amount
+//                        offsetX += dragAmount.x
+//                        offsetY += dragAmount.y
+//                    }
+//                }
+//                .clickable(onClick = onClick) // Handle clicks
+//        ) {
+//            Icon(
+//                imageVector = imageVector,
+//                contentDescription = description,
+//                tint = Color.White,
+//                modifier = Modifier
+//                    .align(Alignment.Center) // Center the icon inside the box
+//                    .size(30.dp) // Size of the icon inside the button
+//            )
+//        }
+//    }
+//}

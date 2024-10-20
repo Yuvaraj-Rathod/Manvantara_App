@@ -216,8 +216,8 @@ fun TopBar(navController: NavController,authViewModel: AuthViewModel) {
             horizontalArrangement = Arrangement.Absolute.SpaceBetween
         ) {
 
-            BoxButton(imageVector = Icons.Default.Info, description = "info") {
-                navController.navigate("login")
+            BoxButton(imageVector = Icons.Default.Info, description = "about") {
+                navController.navigate("about")
             }
 
             Text(text = "Manvantara",
@@ -226,8 +226,8 @@ fun TopBar(navController: NavController,authViewModel: AuthViewModel) {
                 modifier = Modifier.padding(top = 10.dp)
             )
 
-            BoxButton(imageVector = Icons.Default.Person, description = "person") {
-                navController.navigate("login")
+            BoxButton(imageVector = Icons.Default.Person, description = "profile") {
+                navController.navigate("profile")
             }
 
             BoxButton(imageVector = Icons.Default.ExitToApp, description = "exit") {

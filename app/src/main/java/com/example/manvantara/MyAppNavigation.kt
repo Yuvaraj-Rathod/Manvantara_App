@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.manvantara.screens.ChatBotPage.ChatScreen
 import com.example.manvantara.screens.HomePage
 import com.example.manvantara.screens.subject.OsPage
 import com.example.manvantara.screens.SignUpPage
@@ -17,6 +18,7 @@ import com.example.manvantara.screens.subject.CnPage
 import com.example.manvantara.screens.subject.DbmsPage
 import com.example.manvantara.screens.subject.DsaPage
 import com.example.manvantara.viewmodel.AuthViewModel
+import com.example.manvantara.viewmodel.ChatViewModel
 
 @Composable
 fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel) {
@@ -55,6 +57,8 @@ fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel) 
         composable("downloads") {
             Downloads(modifier,navcontroller)
         }
-
+       composable("chatbot"){
+           ChatScreen(chatViewModel = ChatViewModel())
+       }
     }
 }

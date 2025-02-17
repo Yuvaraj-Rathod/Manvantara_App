@@ -23,6 +23,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
@@ -31,6 +32,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -79,6 +81,15 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
     }
 
     Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { navController.navigate("chatbot")},
+                shape = CircleShape,
+                containerColor = Color.Cyan
+            ) {
+                Icon(Icons.Default.Face, contentDescription = "New Chat")
+            }
+        },
         content = { paddingValues ->
             Column(
                 modifier = Modifier
@@ -133,7 +144,7 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
                     modifier = Modifier.padding(start = 16.dp)
                 )
                 DisplayCardsObject.DisplayOtherCards(navController)
-//                DraggableFloatingButton(imageVector = Icons.Default.Favorite, description = "download") {}
+//
             }
         }
     )
@@ -255,45 +266,3 @@ fun BoxButton(imageVector: ImageVector, description: String, onClick: () -> Unit
         )
     }
 }
-
-//@Composable
-//fun DraggableFloatingButton(
-//    imageVector: ImageVector, // Button icon
-//    description: String, // Content description
-//    onClick: () -> Unit // Click action
-//) {
-//    // Remember the position state
-//    var offsetX by remember { mutableStateOf(0f) }
-//    var offsetY by remember { mutableStateOf(0f) }
-//
-//    Box(
-//        modifier = Modifier
-//            .fillMaxSize() // Fill the available space
-//    ) {
-//        Box(
-//            modifier = Modifier
-//                .size(56.dp) // Size of the button
-//                .clip(CircleShape) // Circular shape for the button
-//                .background(Color(0xFF008B8B)) // Background color
-//                .offset { IntOffset(offsetX.roundToInt(), offsetY.roundToInt()) } // Offset for drag movement
-//                .pointerInput(Unit) {
-//                    detectDragGestures { change, dragAmount ->
-//                        change.consume() // Consume the gesture
-//                        // Update the offset based on the drag amount
-//                        offsetX += dragAmount.x
-//                        offsetY += dragAmount.y
-//                    }
-//                }
-//                .clickable(onClick = onClick) // Handle clicks
-//        ) {
-//            Icon(
-//                imageVector = imageVector,
-//                contentDescription = description,
-//                tint = Color.White,
-//                modifier = Modifier
-//                    .align(Alignment.Center) // Center the icon inside the box
-//                    .size(30.dp) // Size of the icon inside the button
-//            )
-//        }
-//    }
-//}

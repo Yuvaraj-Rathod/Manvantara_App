@@ -11,3 +11,8 @@ data class CardData(
 data class YoutubeVideo(
     val title : String,
     val link : String)
+
+data class MessageModel(
+    val message : String,
+    val role : String
+)
